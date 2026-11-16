@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEVERSE | Beyond Learning</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --blue:#35aaff;
+  --cyan:#00e5ff;
+  --red:#ff4265;
+  --green:#35e6a0;
+  --purple:#ae80ff;
+  --gold:#ffc65c;
+  --text:#e8f2ff;
+  --muted:#b0bfd3;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:#050914;
+  color:var(--text);
+  font-family:'Vazirmatn',sans-serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND IMAGE */
+
+.background {
+  position:fixed;
+  inset:0;
+  z-index:-3;
+
+  background-image:
+    linear-gradient(
+      rgba(3,7,18,.76),
+      rgba(3,7,18,.86)
+    ),
+    url("./background.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transform:scale(1.02);
+}
+
+/* RGB PARTICLES */
+
+#particles {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:5;
+  pointer-events:none;
+}
+
+/* LIGHT EFFECT */
+
+.ambient {
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%,#126cff25,transparent 35%),
+    radial-gradient(circle at 85% 70%,#00ffbb17,transparent 35%);
+  animation:ambientMove 9s infinite alternate;
+}
+
+@keyframes ambientMove {
+  from { opacity:.5; }
+  to { opacity:1; }
+}
+
+/* HEADER */
+
+header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:15px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#050914dd;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #35aaff45;
+}
+
+.logo {
+  color:var(--blue);
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-shadow:0 0 20px #35aaff;
+}
+
+nav {
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  transition:.3s;
+}
+
+nav a:hover {
+  color:var(--cyan);
+  text-shadow:0 0 12px var(--cyan);
+}
+
+.control-btn {
+  background:#101b2b;
+  color:var(--cyan);
+  border:1px solid #35aaff75;
+  padding:9px 13px;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 20px;
+  position:relative;
+}
+
+.hero-content {
+  position:relative;
+  z-index:10;
+}
+
+.tag {
+  display:inline-block;
+  padding:8px 20px;
+  border:1px solid #35aaff;
+  color:var(--cyan);
+  border-radius:30px;
+  font-size:12px;
+  box-shadow:0 0 20px #168cff35;
+}
+
+.hero h1 {
+  font-size:clamp(40px,8vw,85px);
+  margin:20px 0;
+  text-shadow:0 0 35px #168cff90;
+}
+
+.hero h1 span {
+  color:var(--blue);
+}
+
+.hero p {
+  color:#d0dced;
+  line-height:2.2;
+  max-width:580px;
+  margin:0 auto 28px;
+}
+
+.main-btn {
+  display:inline-block;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(100deg,#1267ce,#00b8d9);
+  padding:13px 30px;
+  border-radius:10px;
+  box-shadow:0 0 25px #168cff65;
+  transition:.3s;
+}
+
+.main-btn:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 40px #168cff;
+}
+
+/* SECTIONS */
+
+.section {
+  --accent:var(--blue);
+
+  position:relative;
+  max-width:1100px;
+  margin:55px auto;
+  padding:35px;
+
+  background:linear-gradient(
+    145deg,
+    rgba(12,20,36,.94),
+    rgba(5,10,20,.94)
+  );
+
+  border:1px solid var(--accent);
+  border-radius:18px;
+  overflow:hidden;
+
+  box-shadow:0 0 25px color-mix(in srgb,var(--accent) 20%,transparent);
+  animation:appear .8s ease both;
+}
+
+.section::before {
+  content:"";
+  position:absolute;
+  top:-5px;
+  left:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+  box-shadow:0 0 20px var(--accent);
+  animation:scanner 5s linear infinite;
+}
+
+.section::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    transparent 0px,
+    transparent 5px,
+    color-mix(in srgb,var(--accent) 5%,transparent) 6px
+  );
+  opacity:.4;
+}
+
+.section > * {
+  position:relative;
+  z-index:2;
+}
+
+.blue { --accent:#35aaff; }
+.red { --accent:#ff4265; }
+.green { --accent:#35e6a0; }
+.purple { --accent:#ae80ff; }
+.gold { --accent:#ffc65c; }
+
+.section-title {
+  color:var(--accent);
+  font-size:23px;
+  margin-bottom:12px;
+  text-shadow:0 0 15px var(--accent);
+}
+
+.description {
+  color:var(--muted);
+  font-size:13px;
+  line-height:2;
+  margin-bottom:25px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.item {
+  background:#080e19;
+  border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
+  border-radius:12px;
+  padding:17px;
+  transition:.3s;
+  min-width:0;
+}
+
+.item:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 25px color-mix(in srgb,var(--accent) 30%,transparent);
+}
+
+.item h3 {
+  color:var(--accent);
+  margin-bottom:12px;
+}
+
+.item p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+}
+
+.media {
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:contain;
+  background:#111d2d;
+  border-radius:9px;
+  margin-bottom:12px;
+}
+
+.image-preview {
+  object-fit:cover;
+}
+
+.upload {
+  display:inline-block;
+  padding:8px 12px;
+  margin-top:12px;
+  background:#16243a;
+  border:1px solid var(--accent);
+  border-radius:8px;
+  color:white;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.upload input { display:none; }
+
+/* PDF */
+
+.pdf-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.pdf {
+  padding:18px 10px;
+  text-align:center;
+  border-radius:10px;
+  border:1px solid #ae80ff66;
+  background:#140e24;
+}
+
+.pdf strong {
+  display:block;
+  color:#c5a5ff;
+  margin-bottom:7px;
+}
+
+.pdf a {
+  color:white;
+  font-size:12px;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+
+/* SOCIAL */
+
+.social-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.social {
+  padding:25px;
+  background:#080e19;
+  border:1px solid #35e6a055;
+  border-radius:12px;
+}
+
+.social h3 {
+  color:var(--green);
+  margin-bottom:10px;
+}
+
+.social a {
+  color:var(--cyan);
+  text-decoration:none;
+}
+
+/* FOOTER */
+
+footer {
+  padding:45px 20px;
+  text-align:center;
+  background:#050914ed;
+  border-top:1px solid #35aaff45;
+}
+
+footer h2 {
+  color:var(--blue);
+  margin-bottom:15px;
+}
+
+footer p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:2.2;
+}
+
+footer .names {
+  color:var(--cyan);
+  margin-top:15px;
+  font-weight:700;
+}
+
+/* MUSIC */
+
+.music {
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  z-index:100;
+  background:#101b2b;
+  border:1px solid var(--blue);
+  color:var(--cyan);
+  border-radius:30px;
+  padding:12px 18px;
+  cursor:pointer;
+  box-shadow:0 0 20px #168cff55;
+}
+
+.music:hover {
+  box-shadow:0 0 30px var(--cyan);
+}
+
+/* SCANNER */
+
+@keyframes scanner {
+  0% { transform:translateY(0); }
+  100% { transform:translateY(500px); }
+}
+
+@keyframes appear {
+  from { opacity:0;transform:translateY(25px); }
+  to { opacity:1;transform:translateY(0); }
+}
+
+@media(max-width:700px) {
+  header {
+    padding:12px 4%;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  nav {
+    order:3;
+    width:100%;
+    justify-content:center;
+    gap:12px;
+  }
+
+  nav a { font-size:11px; }
+
+  .section {
+    margin:25px 12px;
+    padding:20px;
+  }
+
+  .grid,.social-grid {
+    grid-template-columns:1fr;
+  }
+
+  .pdf-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="ambient"></div>
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="logo">CODEVERSE.</div>
+
+  <nav>
+    <a href="#learn" data-fa="آموزش" data-en="Learning">آموزش</a>
+    <a href="#videos" data-fa="ویدئوها" data-en="Videos">ویدئوها</a>
+    <a href="#files" data-fa="منابع" data-en="Resources">منابع</a>
+    <a href="#community" data-fa="ارتباط" data-en="Community">ارتباط</a>
+  </nav>
+
+  <button class="control-btn" onclick="changeLanguage()">EN / FA</button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="tag"
+      data-fa="آینده را خودت برنامه‌نویسی کن"
+      data-en="CODE YOUR OWN FUTURE">
+      آینده را خودت برنامه‌نویسی کن
+    </span>
+
+    <h1>CODE<span>VERSE</span></h1>
+
+    <p
+      data-fa="اینجا یاد می‌گیری، تجربه می‌کنی و ایده‌هایت را به دنیای واقعی تبدیل می‌کنی."
+      data-en="Learn, experiment, and turn your ideas into real projects.">
+      اینجا یاد می‌گیری، تجربه می‌کنی و ایده‌هایت را به دنیای واقعی تبدیل می‌کنی.
+    </p>
+
+    <a href="#learn" class="main-btn"
+      data-fa="شروع یادگیری"
+      data-en="Start Learning">
+      شروع یادگیری
+    </a>
+  </div>
+</section>
+
+<section class="section blue" id="learn">
+  <h2 class="section-title"
+    data-fa="01 / مسیر یادگیری"
+    data-en="01 / Learning Path">01 / مسیر یادگیری</h2>
+
+  <p class="description"
+    data-fa="قدم‌به‌قدم وارد دنیای طراحی و برنامه‌نویسی وب شو."
+    data-en="Step into web design and programming, one step at a time.">
+    قدم‌به‌قدم وارد دنیای طراحی و برنامه‌نویسی وب شو.
+  </p>
+
+  <div class="grid">
+    <div class="item">
+      <h3>HTML</h3>
+      <p>ساختار اصلی صفحات وب و اسکلت سایت.</p>
+    </div>
+    <div class="item">
+      <h3>CSS</h3>
+      <p>طراحی ظاهر، رنگ‌ها، انیمیشن‌ها و افکت‌ها.</p>
+    </div>
+    <div class="item">
+      <h3>JavaScript</h3>
+      <p>اضافه کردن امکانات و تعامل به سایت.</p>
+    </div>
+    <div class="item">
+      <h3>PROJECTS</h3>
+      <p>ساخت پروژه‌های واقعی و تمرین مهارت‌ها.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section red" id="videos">
+  <h2 class="section-title">02 / VIDEO LESSONS</h2>
+  <p class="description">ویدئوهای آموزشی CODEVERSE</p>
+
+  <div class="grid">
+    <div class="item">
+      <h3>VIDEO 01</h3>
+      <video class="media" controls></video>
+      <label class="upload">انتخاب ویدئو
+        <input type="file" accept="video/*" onchange="previewFile(this)">
+      </label>
+    </div>
+
+    <div class="item">
+      <h3>VIDEO 02</h3>
+      <video class="media" controls></video>
+      <label class="upload">انتخاب ویدئو
+        <input type="file" accept="video/*" onchange="previewFile(this)">
+      </label>
+    </div>
+  </div>
+</section>
+
+<section class="section green">
+  <h2 class="section-title">03 / IMAGE GALLERY</h2>
+  <p class="description">گالری تصاویر و نمونه‌کارها</p>
+
+  <div class="grid">
+    <div class="item">
+      <h3>IMAGE 01</h3>
+      <img class="media image-preview" alt="Image 01">
+      <label class="upload">انتخاب تصویر
+        <input type="file" accept="image/*" onchange="previewFile(this)">
+      </label>
+    </div>
+
+    <div class="item">
+      <h3>IMAGE 02</h3>
+      <img class="media image-preview" alt="Image 02">
+      <label class="upload">انتخاب تصویر
+        <input type="file" accept="image/*" onchange="previewFile(this)">
+      </label>
+    </div>
+  </div>
+</section>
+
+<section class="section purple" id="files">
+  <h2 class="section-title">04 / PDF LIBRARY</h2>
+  <p class="description">کتابخانه منابع و جزوه‌های آموزشی</p>
+
+  <div class="pdf-grid">
+    <div class="pdf"><strong>PDF 01</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 02</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 03</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 04</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 05</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 06</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 07</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+    <div class="pdf"><strong>PDF 08</strong><a class="pdf-link" href="#">فایلی انتخاب نشده</a><br><label class="upload">انتخاب PDF<input type="file" accept=".pdf,application/pdf" onchange="previewPDF(this)"></label></div>
+  </div>
+</section>
+
+<section class="section gold" id="community">
+  <h2 class="section-title">05 / COMMUNITY</h2>
+  <p class="description">با جامعه برنامه‌نویسان همراه شو.</p>
+
+  <div class="social-grid">
+    <div class="social">
+      <h3>X / TWITTER 01</h3>
+      <p class="description">صفحه اول شبکه اجتماعی</p>
+      <a href="https://x.com/" target="_blank" rel="noopener">ورود به X</a>
+    </div>
+
+    <div class="social">
+      <h3>X / TWITTER 02</h3>
+      <p class="description">صفحه دوم شبکه اجتماعی</p>
+      <a href="https://x.com/" target="_blank" rel="noopener">ورود به X</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>CODEVERSE</h2>
+  <p>Learn today. Build tomorrow.</p>
+  <p class="names">Developers: ابوالفضل قیاسوند | محمد متین</p>
+  <p>© CODEVERSE 2026</p>
+</footer>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">
+  ♫ موسیقی: در حال بارگذاری
+</button>
+
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+
+<script>
+
+/* LANGUAGE */
+
+let currentLang = 'fa';
+
+function changeLanguage() {
+  currentLang = currentLang === 'fa' ? 'en' : 'fa';
+
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir =
+    currentLang === 'fa' ? 'rtl' : 'ltr';
+
+  document.querySelectorAll('[data-fa]').forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
+
+  updateMusicButton();
+}
+
+/* MUSIC */
+
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+let musicOn = false;
+
+function updateMusicButton() {
+  musicBtn.textContent = currentLang === 'fa'
+    ? (musicOn ? '♫ موسیقی: روشن' : '♫ موسیقی: خاموش')
+    : (musicOn ? '♫ Music: ON' : '♫ Music: OFF');
+}
+
+async function toggleMusic() {
+  if (musicOn) {
+    music.pause();
+    musicOn = false;
+  } else {
+    try {
+      await music.play();
+      musicOn = true;
+    } catch(error) {
+      alert('فایل music.mp3 را بررسی کن.');
+    }
+  }
+
+  updateMusicButton();
+}
+
+/* AUTOPLAY ATTEMPT */
+
+window.addEventListener('load', async () => {
+  try {
+    await music.play();
+    musicOn = true;
+  } catch(error) {
+    musicOn = false;
+  }
+
+  updateMusicButton();
+});
+
+/* LOCAL FILE PREVIEW */
+
+function previewFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const preview = input.closest('.item').querySelector('.media');
+  const url = URL.createObjectURL(file);
+
+  preview.src = url;
+
+  if (preview.tagName === 'VIDEO') {
+    preview.load();
+  }
+}
+
+function previewPDF(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const link = input.closest('.pdf').querySelector('.pdf-link');
+
+  link.href = URL.createObjectURL(file);
+  link.target = '_blank';
+  link.textContent = file.name;
+}
+
+/* RGB FALLING PARTICLES */
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+const colors = [
+  '#35aaff',
+  '#00e5ff',
+  '#ff4265',
+  '#35e6a0',
+  '#ae80ff',
+  '#ffc65c'
+];
+
+function resizeCanvas() {
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+
+  createParticles();
+}
+
+function createParticles() {
+  const count = Math.min(
+    65,
+    Math.max(20, Math.floor(window.innerWidth / 18))
+  );
+
+  particles = [];
+
+  for(let i = 0; i < count; i++) {
+    particles.push({
+      x:Math.random() * window.innerWidth,
+      y:Math.random() * window.innerHeight,
+      size:Math.random() * 2.5 + 1,
+      speed:Math.random() * 1.5 + .5,
+      color:colors[Math.floor(Math.random() * colors.length)],
+      alpha:Math.random() * .7 + .3,
+      drift:(Math.random() - .5) * .5
+    });
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+  for(const p of particles) {
+    p.y += p.speed;
+    p.x += p.drift;
+
+    if(p.y > window.innerHeight + 10) {
+      p.y = -10;
+      p.x = Math.random() * window.innerWidth;
+    }
+
+    if(p.x < 0) p.x = window.innerWidth;
+    if(p.x > window.innerWidth) p.x = 0;
+
+    ctx.save();
+
+    ctx.globalAlpha = p.alpha;
+    ctx.shadowBlur = 13;
+    ctx.shadowColor = p.color;
+    ctx.fillStyle = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize',resizeCanvas);
+
+resizeCanvas();
+animateParticles();
+
+</script>
+
+</body>
+</html>
